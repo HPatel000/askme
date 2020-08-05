@@ -30,7 +30,6 @@ router.post('/:id', [auth, [
   }
 
   const { ans } = req.body;
-  console.log(req.params.id);
   try {
     const newAnswer = new Answer({
       ans,

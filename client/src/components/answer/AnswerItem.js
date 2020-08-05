@@ -16,7 +16,7 @@ const AnswerItem = ({ answer }) => {
     clearCurrent();
   }
   return (
-    <div className='question'>
+    <div className='answer'>
       <p>{ans}</p>
       <button className='floatRight' onClick={onDelete}>
         <DeleteIcon />
