@@ -1,0 +1,711 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-family: "Montserrat", sans-serif;
+}
+
+body {
+  background: #eee;
+  text-align: center;
+}
+
+.displayNone {
+  display: none;
+}
+
+.displayBlock {
+  display: block;
+}
+
+header {
+  background-color: #1b1b2f;
+  width: 100%;
+  /* margin: auto -1rem; */
+  padding: 1rem 2rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+header h1 {
+  color: #fff;
+  font-family: "McLaren", cursive;
+  font-weight: 200;
+  text-align: left;
+}
+
+header p {
+  color: #f4f4f4;
+  padding-top: 0.5rem;
+  font-size: 1rem;
+  font-family: "McLaren",
+    cursive;
+  text-align: left;
+}
+
+.headerLink {
+  text-decoration: none;
+  font-family: "Montserrat", sans-serif;
+  margin-left: 10px;
+  height: 2.5rem;
+  float: right;
+  padding: 0.4rem 0.5rem;
+  border-radius: 5px;
+  border: 2px solid #fff;
+  background-color: #1b1b2f;
+  color: #fff;
+  font-size: 1rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  transition: background-color ease 0.5s;
+}
+
+.headerLink:hover {
+  cursor: pointer;
+  background-color: #1f4868;
+}
+
+.userName {
+  margin-top: -5rem;
+}
+
+.alert {
+  position: absolute;
+  padding: 1rem 2rem;
+  right: 0;
+  opacity: 0.8;
+  background: #1b1b2f;
+  color: white;
+  display: inline-block;
+  margin: 1rem;
+  border-radius: 10px;
+}
+
+/* 
+.alert-primary {
+  background: var(--primary-color);
+  color: #fff;
+}
+
+.alert-light {
+  background: var(--light-color);
+  color: #333;
+}
+
+.alert-dark {
+  background: var(--dark-color);
+  color: #fff;
+}
+
+.alert-danger {
+  background: var(--danger-color);
+  color: #fff;
+}
+
+.alert-success {
+  background: var(--success-color);
+  color: #fff;
+}
+
+.alert-white {
+  background: #fff;
+  color: #333;
+  border: #ccc solid 1px;
+}
+ */
+
+form.create-que {
+  color: #1b1b2f;
+  position: relative;
+  width: 70%;
+  margin: 3rem auto 1rem auto;
+  background: #fff;
+  padding: 1rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+form.filterForm {
+  color: #1b1b2f;
+  position: relative;
+  background: #fff;
+  width: 50%;
+  margin: 1.5rem auto 1rem auto;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  box-shadow: 0 1px 5px rgb(138, 137, 137);
+}
+
+form.create-que input,
+form.create-que textarea,
+form.filterForm input {
+  width: 100%;
+  border: none;
+  padding: 4px;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+}
+
+form.create-que button {
+  position: absolute;
+  right: 18px;
+  bottom: -18px;
+  background: #1b1b2f;
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
+  cursor: pointer;
+  outline: none;
+}
+
+.clear-btn {
+  position: absolute;
+  right: 100px;
+  bottom: -18px;
+  background-color: lightgray;
+  color: #1b1b2f;
+}
+
+input[type='file'] {
+  display: none;
+}
+
+.imageInput {
+  display: inline-block;
+  padding: 0.5rem;
+  cursor: pointer;
+  color: #1b1b2f;
+  background-color: #ccc;
+  margin-top: 2rem;
+  border-radius: 5px;
+}
+
+.question {
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px #ccc;
+  padding: 0.5rem;
+  margin: 1rem 5rem;
+  margin-bottom: 3rem;
+}
+
+.question p {
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  margin-bottom: 10px;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.questionHeader {
+  margin: 2rem;
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.question button,
+.answer button,
+.answerLink {
+  text-decoration: none;
+  position: relative;
+  margin-right: 10px;
+  /* margin-top: -1.5rem; */
+  color: #1b1b2f;
+  /* border: 2px solid #ccc; */
+  border: none;
+  cursor: pointer;
+  outline: none;
+  padding: 5px;
+  border-radius: 5px;
+  font-size: 1rem;
+  font-weight: bold;
+  font-family: "McLaren",
+    cursive;
+  background-color: #eee;
+  transition: background-color ease 0.5s;
+}
+
+.question button:hover,
+.answerLink:hover {
+  background-color: #ccc;
+}
+
+.answer {
+  background-color: #ccc;
+  border-radius: 5px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  box-shadow: 0 2px 5px #ccc;
+}
+
+.answer p {
+  font-weight: 200;
+  background-color: #eee;
+  border-radius: 5px;
+  text-align: left;
+  padding: 1rem;
+  font-size: 1rem;
+  margin-bottom: -2rem;
+  margin-top: 3rem;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.answer button {
+  background-color: #ccc;
+}
+
+.answer button:hover {
+  background-color: #eee;
+}
+
+.toggleLike button {
+  color: #e43f5a;
+}
+
+.toggleUnlike button {
+  color: #1b1b2f;
+}
+
+.likeQue {
+  color: #ccc;
+  transform: scale(4);
+}
+
+.floatRight {
+  float: right;
+}
+
+.floatLeft {
+  float: left;
+}
+
+.homePage {
+  text-align: center;
+  padding: 0.5rem;
+  margin: 0;
+  display: inline-block;
+  width: 100%;
+  height: 100%;
+}
+
+.mainIcon {
+  transform: scale(2);
+  color: #1b1b2f;
+  margin: 0.5rem;
+}
+
+.homePage h1 {
+  font-family: "McLaren",
+    cursive;
+  font-size: 2rem;
+  color: #1b1b2f;
+}
+
+.homePage p {
+  margin: 0;
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.hrLine {
+  color: #1b1b2f;
+  margin: 3rem;
+  opacity: 0.8;
+}
+
+.redirectLink {
+  margin: 0rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: background-color ease 0.5s;
+  text-decoration: none;
+}
+
+.logIn {
+  background-color: #1b1b2f;
+  color: #fff;
+}
+
+.register {
+  background-color: lightgray;
+  color: #1b1b2f;
+}
+
+.logIn:hover {
+  cursor: pointer;
+  background-color: #162447;
+  color: #fff;
+}
+
+.register:hover {
+  cursor: pointer;
+  color: black;
+  background-color: grey;
+}
+
+.userForm {
+  text-align: center;
+  padding-top: 3rem;
+  display: block;
+}
+
+.userForm h1 {
+  font-family: "McLaren",
+    cursive;
+  font-weight: bold;
+  font-size: 2.5rem;
+}
+
+.userForm h1 QuestionAnswerIcon {
+  transform: scale(2);
+}
+
+.userForm span {
+  font-family: "McLaren",
+    cursive;
+  font-weight: bold;
+  margin: 0.5rem;
+  color: #1f4868;
+}
+
+.userForm form {
+  display: inline-block;
+  margin: auto;
+  text-align: left;
+  height: 100%;
+}
+
+.userForm label {
+  font-size: 1.5rem;
+  font-weight: bold;
+  font-family: "McLaren",
+    cursive;
+  text-align: left;
+  margin-right: 1rem;
+}
+
+.userForm input {
+  width: 30rem;
+  border-radius: 5px;
+  border: none;
+  padding: 1rem;
+  outline: none;
+  font-size: 1.2em;
+  font-family: inherit;
+  resize: none;
+  margin: 0.5rem 0rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+}
+
+.userForm button {
+  font-family: "McLaren",
+    cursive;
+  margin: 1.5rem 0rem;
+  width: 30rem;
+  padding: 0.5rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #1b1b2f;
+  color: #fff;
+  font-size: 1.5rem;
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+  transition: background-color ease 0.5s;
+}
+
+.userForm button:hover {
+  cursor: pointer;
+  background-color: #1f4868;
+}
+
+.ProfileHeader {
+  background-color: #1b1b2f;
+  display: block;
+  height: 100px;
+  text-align: center;
+}
+
+.ProfileHeader h1 {
+  float: left;
+  padding: 1rem;
+  font-family: "McLaren",
+    cursive;
+  font-size: 2.5rem;
+  color: white;
+}
+
+.Contributions {
+  float: right;
+  color: white;
+  padding: 1.5rem;
+  height: 100px;
+  margin: auto;
+}
+
+.Contributions p {
+  padding: 0.2rem;
+  font-family: "McLaren",
+    cursive;
+  font-size: 1.2rem;
+}
+
+.ProfileSmallTitle {
+  padding: 1rem;
+  font-family: "McLaren",
+    cursive;
+  font-size: 2rem;
+}
+
+.ProfileFlex {
+  display: flex;
+}
+
+/* Animation (Add after) */
+.item-enter {
+  opacity: 0;
+}
+
+.item-enter-active {
+  opacity: 1;
+  transition: opacity 1000ms ease-in;
+}
+
+.item-exit {
+  opacity: 1;
+}
+
+.item-exit-active {
+  opacity: 0;
+  transition: opacity 1000ms ease-in;
+}
+
+
+@media(max-width: 768px) {
+  .userName {
+    display: inline-block;
+    text-align: left;
+    font-size: 1rem;
+    margin-top: -2.5rem;
+  }
+
+  .headerLink {
+    text-decoration: none;
+    font-family: "Montserrat",
+      sans-serif;
+    padding: 0.4rem 0.5rem;
+    font-size: 1rem;
+  }
+
+  header p {
+    display: none;
+  }
+
+  header h1 {
+    padding-bottom: 1rem;
+  }
+
+  form.create-que {
+    width: 90%;
+  }
+
+  form.filterForm {
+    width: 80%;
+  }
+
+  .question {
+    padding: 1rem;
+    margin: 0.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .question p {
+    padding: 0.5rem;
+  }
+
+  /* .questionHeader {
+    margin: 2rem;
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  } */
+
+  .answer {
+    background-color: #ccc;
+    border-radius: 5px;
+    margin-bottom: 1rem;
+    box-shadow: 0 2px 5px #ccc;
+  }
+
+  .answer p {
+    font-weight: 200;
+    background-color: #eee;
+    border-radius: 5px;
+    text-align: left;
+    font-size: 1rem;
+    margin-bottom: -2rem;
+    margin-top: 3rem;
+    white-space: pre-wrap;
+    word-wrap: break-word;
+  }
+
+  .homePage {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    text-align: center;
+    padding: 1rem;
+    margin: auto;
+    display: inline-block;
+    width: 70%;
+    height: 70%;
+  }
+
+  .mainIcon {
+    transform: scale(3);
+    color: #1b1b2f;
+    margin: 0.5rem 1.5rem;
+  }
+
+  .homePage h1 {
+    font-family: "McLaren",
+      cursive;
+    font-size: 4rem;
+    color: #1b1b2f;
+  }
+
+  .homePage p {
+    margin: 2rem 5rem;
+    margin-bottom: 2rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+
+  .hrLine {
+    color: #1b1b2f;
+    margin: 3rem;
+    opacity: 0.8;
+  }
+
+  .redirectLink {
+    margin: 0rem 2rem;
+    padding: 1rem;
+    border-radius: 5px;
+    font-weight: bold;
+    font-size: 1.2rem;
+    transition: background-color ease 0.5s;
+    text-decoration: none;
+  }
+
+  .logIn {
+    background-color: #1b1b2f;
+    color: #fff;
+  }
+
+  .register {
+    background-color: lightgray;
+    color: #1b1b2f;
+  }
+
+  .logIn:hover {
+    cursor: pointer;
+    background-color: #162447;
+    color: #fff;
+  }
+
+  .register:hover {
+    cursor: pointer;
+    color: black;
+    background-color: grey;
+  }
+
+  .userForm {
+    text-align: center;
+    padding-top: 3rem;
+    display: block;
+  }
+
+  .userForm h1 {
+    font-family: "McLaren",
+      cursive;
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  .userForm h1 QuestionAnswerIcon {
+    transform: scale(2);
+  }
+
+  .userForm span {
+    font-family: "McLaren",
+      cursive;
+    font-weight: bold;
+    margin: 0.5rem;
+    color: #1f4868;
+  }
+
+  .userForm form {
+    display: inline-block;
+    margin: auto;
+    text-align: left;
+    height: 100%;
+  }
+
+  .userForm label {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "McLaren",
+      cursive;
+    text-align: left;
+    margin-right: 1rem;
+  }
+
+  .userForm input {
+    width: 30rem;
+    border-radius: 5px;
+    border: none;
+    padding: 1rem;
+    outline: none;
+    font-size: 1.2em;
+    font-family: inherit;
+    resize: none;
+    margin: 0.5rem 0rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3);
+  }
+
+  .userForm button {
+    font-family: "McLaren",
+      cursive;
+    margin: 1.5rem 0rem;
+    width: 30rem;
+    padding: 0.5rem;
+    border-radius: 5px;
+    border: none;
+    background-color: #1b1b2f;
+    color: #fff;
+    font-size: 1.5rem;
+    box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+    transition: background-color ease 0.5s;
+  }
+
+  .userForm button:hover {
+    cursor: pointer;
+    background-color: #1f4868;
+  }
+
+}
