@@ -5,8 +5,20 @@ const { check, validationResult } = require('express-validator');
 
 const Question = require('../models/Question');
 
+// @route GET api/questions/all
+// @desc get all the questions
+// @access public
+router.get('/all', async (req, res) => {
+  try {
+    const questions = await Question.find().sort({ date: -1 });
+    res.json(questions);
+  } catch (error) {
+    res.status(500).send('Server Error');
+  }
+});
+
 // @route GET api/questions
-// @desc Get all users questions
+// @desc Get user's all questions
 // @access Private
 router.get('/', auth, async (req, res) => {
   try {

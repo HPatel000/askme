@@ -7,6 +7,7 @@ export const CLEAR_CONTACTS = 'CLEAR_CONTACTS';
 export const CONTACT_ERROR = 'CONTACT_ERROR';
 
 
+export const GET_ALL_QUESTIONS = 'GET_ALL_QUESTIONS';
 export const GET_QUESTIONS = 'GET_QUESTIONS';
 export const ADD_QUESTION = 'ADD_QUESTION';
 export const DELETE_QUESTION = 'DELETE_QUESTION';
@@ -22,6 +23,8 @@ export const UPDATE_ANSWER = 'UPDATE_ANSWER';
 export const FILTER_ANSWERS = 'FILTER_ANSWERS';
 export const CLEAR_ANSWERS = 'CLEAR_ANSWERS';
 export const ANSWER_ERROR = 'ANSWER_ERROR';
+
+export const UPDATE_USER = 'UPDATE_USER';
 
 export const SET_CURRENT = 'SET_CURRENT';
 export const CLEAR_CURRENT = 'CLEAR_CURRENT';

@@ -7,20 +7,20 @@ import Spinner from '../layout/Spinner';
 const Questions = () => {
   const queContext = useContext(QuestionContext);
 
-  const { questions, filtered, getQuestion, loading } = queContext;
+  const { allQuestions, filtered, getAllQuestion, loading, getQuestion } = queContext;
 
   useEffect(() => {
-    getQuestion();
+    getAllQuestion();
     // eslint-disable-next-line
   }, []);
 
-  if (questions !== null && questions.length === 0 && !loading) {
+  if (allQuestions !== null && allQuestions.length === 0 && !loading) {
     return <h4> please ask your Question</h4>
   }
 
   return (
     <Fragment>
-      {(questions !== null && !loading)
+      {(allQuestions !== null && !loading)
         ? (
           <TransitionGroup>
             {filtered !== null
@@ -28,7 +28,7 @@ const Questions = () => {
                 <CSSTransition key={question._id} timeout={500} classNames='item'>
                   <QuestionItem question={question} />
                 </CSSTransition>)
-              : questions.map(question =>
+              : allQuestions.map(question =>
                 <CSSTransition key={question._id} timeout={500} classNames='item'>
                   <QuestionItem question={question} />
                 </CSSTransition>

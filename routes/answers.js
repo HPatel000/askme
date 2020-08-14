@@ -8,7 +8,7 @@ const Answer = require('../models/Answer');
 // @route GET api/answers
 // @desc Get all questions answers
 // @access Private
-router.get('/:id', auth, async (req, res) => {
+router.get('/:id', async (req, res) => {
   try {
     const answers = await Answer.find({ question: req.params.id }).sort({ date: -1 });
     res.json(answers);
@@ -34,7 +34,8 @@ router.post('/:id', [auth, [
     const newAnswer = new Answer({
       ans,
       question: req.params.id,
-      user: req.user.id
+      user: req.user.id,
+      likeCount: 0
     });
 
     const answer = await newAnswer.save();
@@ -51,11 +52,12 @@ router.post('/:id', [auth, [
 // @desc Update answer
 // @access Private
 router.put('/:id', async (req, res) => {
-  const { ans } = req.body;
+  const { ans, likeCount } = req.body;
 
-  // Build contact object
+  // Build answer object
   const answerFields = {};
   if (ans) answerFields.ans = ans;
+  if (likeCount) answerFields.likeCount = likeCount;
 
   try {
 

@@ -1,15 +1,19 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, Fragment } from 'react';
 import Answers from '../answer/Answers';
 import { Link, Route, Redirect } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import PropTypes from 'prop-types';
 import QuestionContext from '../../context/question/queContext';
+import AuthContext from '../../context/auth/authContext';
 
 const QuestionItem = ({ question }) => {
 
   const questionContext = useContext(QuestionContext);
   const { deleteQuestion, setCurrent, clearCurrent } = questionContext;
+
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated, user } = authContext;
 
   const [toggleAns, settoggleAns] = useState('displayNone');
 
@@ -24,6 +28,7 @@ const QuestionItem = ({ question }) => {
     clearCurrent();
   }
 
+
   return (
     <div className='question'>
       <p>{que}</p>
@@ -32,15 +37,17 @@ const QuestionItem = ({ question }) => {
           <Answers queId={question._id} />
         </div>
       }
-
-      <button className='floatRight' onClick={onDelete}>
-        <DeleteIcon />
-      </button>
-      <button className='floatRight' onClick={() => setCurrent(question)}>
-        <EditIcon />
-      </button>
+      {user && (user._id === question.user)
+        ? (<Fragment>
+          <button className='floatRight' onClick={onDelete}>
+            <DeleteIcon />
+          </button>
+          <button className='floatRight' onClick={() => setCurrent(question)}>
+            <EditIcon />
+          </button>
+        </Fragment>)
+        : (<Fragment></Fragment>)}
       <button className='floatLeft' onClick={ToggleAns}>Answer</button>
-      {/* <Link className='floatLeft answerLink' to={{ pathname: '/answersofquestion', data: question }} >Answer</Link> */}
     </div>
   )
 }

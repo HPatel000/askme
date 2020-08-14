@@ -13,6 +13,9 @@ const AnswerSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  likeCount: {
+    type: Number,
+  },
   date: {
     type: Date,
     default: Date.now

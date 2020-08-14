@@ -9,10 +9,9 @@ import AnswerContext from '../../context/answer/answerContext';
 const AnswerForm = ({ questionId }) => {
 
   const answerContext = useContext(AnswerContext);
+  const { addAnswer, current, clearCurrent, updateAnswer } = answerContext;
 
   const [isExpanded, setExpanded] = useState(false);
-
-  const { addAnswer, current, clearCurrent, updateAnswer } = answerContext;
 
   useEffect(() => {
     if (current !== null) {
@@ -39,33 +38,23 @@ const AnswerForm = ({ questionId }) => {
     } else {
       updateAnswer(answer);
     }
-    clearAll();
+    clearCurrent();
     setAnswer({
       ans: ''
     });
   }
 
-  const clearAll = () => {
-    clearCurrent();
-  }
-
-  function expand() {
-    setExpanded(true);
-  }
   return (
     <form className='create-que' onSubmit={onSubmit}>
       <textarea name="ans"
-        onFocus={expand}
-        // onClick={expand}
+        onFocus={() => setExpanded(true)}
         onChange={onChange}
         value={ans}
         placeholder={current ? 'Edit Answer...' : 'Add Answer...'} rows={isExpanded ? 3 : 1}
       />
-      <Zoom in={isExpanded}>
-        <Fab type='Submit' >
-          {current ? <EditIcon /> : <AddIcon />}
-        </Fab>
-      </Zoom>
+      <Fab type='Submit' onClick={onSubmit}>
+        {current ? <EditIcon /> : <AddIcon />}
+      </Fab>
     </form>
   )
 }

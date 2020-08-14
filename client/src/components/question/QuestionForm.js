@@ -38,24 +38,16 @@ const QuestionForm = () => {
     } else {
       updateQuestion(question);
     }
-    clearAll();
+    clearCurrent();
     setQuestion({
       que: ''
     });
   }
 
-  const clearAll = () => {
-    clearCurrent();
-  }
-
-  function expand() {
-    setExpanded(true);
-  }
   return (
     <form className='create-que' onSubmit={onSubmit}>
       <textarea name="que"
-        onFocus={expand}
-        // onClick={expand}
+        onFocus={() => setExpanded(true)}
         onChange={onChange}
         value={que}
         placeholder={current ? 'Edit Question...' : 'Add Question...'} rows={isExpanded ? 3 : 1}

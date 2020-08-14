@@ -11,6 +11,7 @@ import {
   FILTER_QUESTIONS,
   CLEAR_FILTER,
   GET_QUESTIONS,
+  GET_ALL_QUESTIONS,
   CLEAR_QUESTIONS,
   QUESTION_ERROR
 } from '../types';
@@ -20,12 +21,26 @@ const QuestionState = props => {
     current: null,
     filtered: null,
     questions: null,
+    allQuestions: null,
     error: null
   }
 
   const [state, dispatch] = useReducer(questionReducer, initalState);
 
-  // get questions
+  // get all questions
+  const getAllQuestion = async () => {
+    try {
+      const res = await axios.get('./api/questions/all');
+      dispatch({ type: GET_ALL_QUESTIONS, payload: res.data });
+    } catch (error) {
+      dispatch({
+        type: QUESTION_ERROR,
+        payload: error
+      })
+    }
+  }
+
+  // get user's questions
   const getQuestion = async () => {
     try {
       const res = await axios.get('./api/questions');
@@ -67,7 +82,7 @@ const QuestionState = props => {
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error.response.msg
+        payload: error
       })
     }
 
@@ -119,6 +134,7 @@ const QuestionState = props => {
     <QuestionContext.Provider
       value={{
         questions: state.questions,
+        allQuestions: state.allQuestions,
         current: state.current,
         filtered: state.filtered,
         error: state.error,
@@ -130,7 +146,8 @@ const QuestionState = props => {
         filteredQuestions,
         clearFilter,
         clearQuestions,
-        getQuestion
+        getQuestion,
+        getAllQuestion
       }}>
       {props.children}
     </QuestionContext.Provider>

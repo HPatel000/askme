@@ -3,15 +3,18 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import PropTypes from 'prop-types';
 import AnswerItem from './AnswerItem';
 import AnswerContext from '../../context/answer/answerContext';
+import AuthContext from '../../context/auth/authContext';
 import Spinner from '../layout/Spinner';
 import AnswerForm from './AnswerForm';
 import AnswerFilter from './AnswerFilter';
 
 const Answers = ({ queId }) => {
   const answerContext = useContext(AnswerContext);
-
   const { answers, filtered, getAnswers, loading } = answerContext;
   let QueAnswers = null;
+
+  const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
 
 
   useEffect(() => {
@@ -23,7 +26,10 @@ const Answers = ({ queId }) => {
     if (answers[`${queId}`].length !== 0) {
       QueAnswers = answers[`${queId}`];
     } else {
-      return <AnswerForm questionId={queId} />
+      if (isAuthenticated)
+        return <AnswerForm questionId={queId} />
+      else
+        return <Fragment><i>  No Answers Login to answer</i></Fragment>
     }
   }
 
@@ -31,7 +37,7 @@ const Answers = ({ queId }) => {
     <Fragment>
       {(QueAnswers !== null && !loading)
         ? (<Fragment>
-          <AnswerForm questionId={queId} />
+          {isAuthenticated ? <AnswerForm questionId={queId} /> : <Fragment></Fragment>}
           <AnswerFilter queId={queId} />
           <TransitionGroup>
             {filtered !== null

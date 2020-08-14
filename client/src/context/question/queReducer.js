@@ -7,12 +7,19 @@ import {
   FILTER_QUESTIONS,
   CLEAR_FILTER,
   GET_QUESTIONS,
+  GET_ALL_QUESTIONS,
   CLEAR_QUESTIONS,
   QUESTION_ERROR
 } from '../types';
 
 export default (state, action) => {
   switch (action.type) {
+    case GET_ALL_QUESTIONS:
+      return {
+        ...state,
+        allQuestions: action.payload,
+        loading: false
+      }
     case GET_QUESTIONS:
       return {
         ...state,
@@ -22,19 +29,19 @@ export default (state, action) => {
     case ADD_QUESTION:
       return {
         ...state,
-        questions: [action.payload, ...state.questions],
+        allQuestions: [action.payload, ...state.allQuestions],
         loading: false
       }
     case UPDATE_QUESTION:
       return {
         ...state,
-        questions: state.questions.map(question => question._id === action.payload._id ? action.payload : question),
+        allQuestions: state.allQuestions.map(question => question._id === action.payload._id ? action.payload : question),
         loading: false
       }
     case DELETE_QUESTION:
       return {
         ...state,
-        questions: state.questions.filter(question => question._id !== action.payload),
+        allQuestions: state.allQuestions.filter(question => question._id !== action.payload),
         loading: false
       }
     case CLEAR_QUESTIONS:
@@ -58,7 +65,7 @@ export default (state, action) => {
     case FILTER_QUESTIONS:
       return {
         ...state,
-        filtered: state.questions.filter(question => {
+        filtered: state.allQuestions.filter(question => {
           const regex = new RegExp(`${action.payload}`, 'gi');
           return question.que.match(regex);
         })

@@ -70,8 +70,8 @@ const AnswerState = props => {
         payload: error
       })
     }
-
   }
+
   // Update answer
   const updateAnswer = async answer => {
     const config = {
@@ -88,7 +88,6 @@ const AnswerState = props => {
         payload: error
       })
     }
-
   }
 
   // clear answers

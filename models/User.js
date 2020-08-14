@@ -18,6 +18,9 @@ const Userschema = mongoose.Schema({
     type: Date,
     default: Date.now
   },
+  likedAnswers: {
+    type: [mongoose.Schema.Types.ObjectId]
+  }
 });
 
 module.exports = mongoose.model('User', Userschema);

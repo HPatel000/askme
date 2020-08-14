@@ -8,6 +8,7 @@ import AuthContext from '../../context/auth/authContext';
 const QuestionsNAnswers = () => {
 
   const authContext = useContext(AuthContext);
+  const { isAuthenticated } = authContext;
 
   useEffect(() => {
     authContext.loadUser();
@@ -16,7 +17,7 @@ const QuestionsNAnswers = () => {
   return (
     <Fragment>
       <Header />
-      <QuestionForm />
+      {isAuthenticated ? <QuestionForm /> : <Fragment></Fragment>}
       <QuestionFilter />
       <Questions />
     </Fragment>

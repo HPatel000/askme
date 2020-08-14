@@ -211,12 +211,12 @@ input[type='file'] {
   background-color: #ccc;
 }
 
-.toggleLike button {
+.toggleLike {
   color: #e43f5a;
 }
 
-.toggleUnlike button {
-  color: #1b1b2f;
+.toggleUnlike {
+  color: #1f4868;
 }
 
 .likeQue {
