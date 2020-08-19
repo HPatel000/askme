@@ -1,48 +1,29 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import ImageIcon from '@material-ui/icons/Image';
+// import PersonIcon from '@material-ui/icons/Person';
 
 function Profile() {
 
+  const [img, setimg] = useState('')
+  const getImage = e => {
+    if (e.target.files[0])
+      setimg(URL.createObjectURL(e.target.files[0]))
+  }
+
   return (
-    <div>
-      <div className='ProfileHeader'>
-        <label className='imageInput'>
-          <input placeholder="Screenshot(optional)" type="file" accept='image/*' />
-          <ImageIcon />
-        </label>
-        <h1>UserName</h1>
-        <div className='Contributions'>
-          <p>Total Questions : {ques.length}</p>
-          <p>Total Answers : {ques.length}</p>
-        </div>
-      </div>
-      <div className='ProfileFlex'>
-        <div className='yourQuestions'>
-          <h3 className='ProfileSmallTitle'>Your Questions</h3>
-          {ques.map((que, index) => {
-            return (
-              <Question
-                key={index}
-                id={index}
-                content={que.content}
-                onDelete={DeleteQue}
-              />
-            )
-          })}
-        </div>
-        <div className='youeAnswers'>
-          <h3 className='ProfileSmallTitle'>You Answered</h3>
-          {ques.map((que, index) => {
-            return (
-              <Question
-                key={index}
-                id={index}
-                content={que.content}
-                onDelete={DeleteQue}
-              />
-            )
-          })}
-        </div>
+    <div className='profilePage'>
+      <svg viewBox='0 0 500 200' className='wavyBG'>
+        <path d='M0, 100 C150, 200 350, 0 500, 100 L500, 00 L0, 0 Z' fill='#1b1b2f'></path>
+      </svg>
+      <div className='ProfileHeader' >
+        <form>
+          <label className='imageInput'>
+            <input type="file" accept='image/*' id='Image' onChange={getImage} />
+            <ImageIcon className='imgIcon' />
+            <img className='profileImage' id='imgShow' src={img} alt='Your profileImage'></img>
+          </label>
+        </form>
+        <span>UserName</span>
       </div>
     </div>
   )

@@ -32,10 +32,8 @@ const AuthState = props => {
     if (localStorage.token) {
       setAuthToken(localStorage.token);
     }
-
     try {
       const res = await axios.get('./api/auth');
-
       dispatch({ type: USER_LOADED, payload: res.data });
     } catch (error) {
       dispatch({ type: AUTH_ERROR });
@@ -110,7 +108,6 @@ const AuthState = props => {
         payload: error
       })
     }
-
   }
 
   return (

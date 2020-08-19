@@ -85,7 +85,6 @@ const QuestionState = props => {
         payload: error
       })
     }
-
   }
   // Update question
   const updateQuestion = async question => {
@@ -103,7 +102,6 @@ const QuestionState = props => {
         payload: error.response.msg
       })
     }
-
   }
 
   // clear questions

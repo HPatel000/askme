@@ -19,7 +19,6 @@ router.post('/', [
   if (!errors.isEmpty()) {
     return res.status(400).json({ errors: errors.array() });
   }
-
   const { name, email, password } = req.body;
   try {
     let user = await User.findOne({ email });
@@ -64,25 +63,19 @@ router.put('/:id', async (req, res) => {
   // Build user object
   const userFileds = {};
   if (likedAnswers) userFileds.likedAnswers = likedAnswers;
-
   try {
-
     let user = await User.findById(req.params.id);
-
     if (!user) return res.status(404).json({ msg: 'User not found' });
-
     user = await User.findByIdAndUpdate(
       req.params.id,
       { $set: userFileds },
       { new: true },
     );
-
     res.json(user);
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
-
 
 module.exports = router;

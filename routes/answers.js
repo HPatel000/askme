@@ -39,12 +39,10 @@ router.post('/:id', [auth, [
     });
 
     const answer = await newAnswer.save();
-
     res.json(answer);
   } catch (error) {
     console.error(error.message);
     res.status(500).send('Server Error');
-
   }
 });
 
@@ -60,17 +58,13 @@ router.put('/:id', async (req, res) => {
   if (likeCount) answerFields.likeCount = likeCount;
 
   try {
-
     let answer = await Answer.findById(req.params.id);
-
     if (!answer) return res.status(404).json({ msg: 'Answer not found' });
-
     answer = await Answer.findByIdAndUpdate(
       req.params.id,
       { $set: answerFields },
       { new: true },
     );
-
     res.json(answer);
   } catch (err) {
     console.error(err.message);
@@ -84,22 +78,17 @@ router.put('/:id', async (req, res) => {
 router.delete('/:id', auth, async (req, res) => {
   try {
     let answer = await Answer.findById(req.params.id);
-
     if (!answer) return res.status(404).json({ msg: 'Answer not found' });
-
     // Make sure user owns answer
     if (answer.user.toString() !== req.user.id) {
       return res.status(401).json({ msg: 'Not authorized' });
     }
-
     await Answer.findByIdAndRemove(req.params.id);
-
     res.json({ msg: 'Answer removed' });
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server Error');
   }
 });
-
 
 module.exports = router;

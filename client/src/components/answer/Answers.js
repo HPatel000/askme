@@ -9,9 +9,10 @@ import AnswerForm from './AnswerForm';
 import AnswerFilter from './AnswerFilter';
 
 const Answers = ({ queId }) => {
+  let QueAnswers = null;
+
   const answerContext = useContext(AnswerContext);
   const { answers, filtered, getAnswers, loading } = answerContext;
-  let QueAnswers = null;
 
   const authContext = useContext(AuthContext);
   const { isAuthenticated } = authContext;
@@ -60,4 +61,5 @@ const Answers = ({ queId }) => {
 Answers.propTypes = {
   queId: PropTypes.string.isRequired,
 }
+
 export default Answers;

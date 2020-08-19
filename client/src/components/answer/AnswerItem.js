@@ -1,4 +1,4 @@
-import React, { useContext, useState, Fragment, useEffect } from 'react';
+import React, { useContext, useState, Fragment } from 'react';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import ThumbUpIcon from '@material-ui/icons/ThumbUp';
@@ -8,13 +8,13 @@ import AnswerContext from '../../context/answer/answerContext';
 import AuthContext from '../../context/auth/authContext';
 
 const AnswerItem = ({ answer }) => {
+  const { ans, _id } = answer;
+
   const answerContext = useContext(AnswerContext);
   const { deleteAnswer, setCurrent, clearCurrent, updateAnswer } = answerContext;
 
   const authContext = useContext(AuthContext);
-  const { user, updateUser, isAuthenticated } = authContext;
-
-  const { ans, date, _id } = answer;
+  const { user, updateUser } = authContext;
 
   const [like, setLike] = useState(user && user.likedAnswers.includes(_id) ? 'toggleLike' : 'toggleUnlike');
 
@@ -26,20 +26,19 @@ const AnswerItem = ({ answer }) => {
   }
 
   const onlike = () => {
-    let newAnswer;
     if (like === 'toggleLike') {
-      newAnswer = { ...answer, likeCount: lCount - 1 }
+      answer.likeCount = answer.likeCount - 1;
       user.likedAnswers = user.likedAnswers.filter(answer => answer !== _id)
       setLike('toggleUnlike');
       setLCount(lCount - 1)
     } else {
-      newAnswer = { ...answer, likeCount: lCount + 1 }
+      answer.likeCount = answer.likeCount + 1;
       user.likedAnswers = [...user.likedAnswers, _id]
       setLike('toggleLike');
       setLCount(lCount + 1)
     }
     updateUser(user);
-    updateAnswer(newAnswer);
+    updateAnswer(answer);
   }
 
   return (
@@ -57,7 +56,7 @@ const AnswerItem = ({ answer }) => {
         : (<Fragment></Fragment>)}
       {user
         ? <button className='floatLeft' onClick={onlike}>
-          {like == 'toggleLike' ? <ThumbUpIcon className={like} /> : <ThumbUpAltOutlinedIcon className={like} />}
+          {like === 'toggleLike' ? <ThumbUpIcon className={like} /> : <ThumbUpAltOutlinedIcon className={like} />}
           {lCount}
         </button>
         : <Fragment></Fragment>}

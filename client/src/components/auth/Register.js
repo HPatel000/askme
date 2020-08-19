@@ -46,8 +46,6 @@ const Register = (props) => {
         password
       });
     }
-    console.log('Register submit');
-
   }
 
   return (
@@ -86,7 +84,6 @@ const Register = (props) => {
           required
           minLength='6'
           placeholder='********'
-
         />
         <br />
         <label htmlFor='password2'>Confirm Password</label>

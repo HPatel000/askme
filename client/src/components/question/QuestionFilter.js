@@ -3,9 +3,9 @@ import QuestionContext from '../../context/question/queContext';
 
 const QuestionFilter = () => {
   const questionContext = useContext(QuestionContext);
-  const text = useRef('');
-
   const { filteredQuestions, clearFilter, filtered } = questionContext;
+
+  const text = useRef('');
 
   useEffect(() => {
     if (filtered === null) {
@@ -20,6 +20,7 @@ const QuestionFilter = () => {
       clearFilter();
     }
   }
+
   return (
     <form className='filterForm'>
       <input ref={text} type='text' placeholder='Filter Questions...' onChange={onChange} />

@@ -6,8 +6,7 @@ import Spinner from '../layout/Spinner';
 
 const Questions = () => {
   const queContext = useContext(QuestionContext);
-
-  const { allQuestions, filtered, getAllQuestion, loading, getQuestion } = queContext;
+  const { allQuestions, filtered, getAllQuestion, loading } = queContext;
 
   useEffect(() => {
     getAllQuestion();

@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import AddIcon from '@material-ui/icons/Add';
 import EditIcon from '@material-ui/icons/Edit';
 import Fab from '@material-ui/core/Fab';
-import Zoom from '@material-ui/core/Zoom';
 import AnswerContext from '../../context/answer/answerContext';
 
 const AnswerForm = ({ questionId }) => {
@@ -50,7 +49,7 @@ const AnswerForm = ({ questionId }) => {
         onFocus={() => setExpanded(true)}
         onChange={onChange}
         value={ans}
-        placeholder={current ? 'Edit Answer...' : 'Add Answer...'} rows={isExpanded ? 3 : 1}
+        placeholder={current ? 'Edit Answer...' : 'Add Answer...'} rows={isExpanded ? 5 : 1}
       />
       <Fab type='Submit' onClick={onSubmit}>
         {current ? <EditIcon /> : <AddIcon />}

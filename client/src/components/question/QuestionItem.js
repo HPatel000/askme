@@ -1,6 +1,5 @@
 import React, { useContext, useState, Fragment } from 'react';
 import Answers from '../answer/Answers';
-import { Link, Route, Redirect } from 'react-router-dom';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
 import PropTypes from 'prop-types';
@@ -13,7 +12,7 @@ const QuestionItem = ({ question }) => {
   const { deleteQuestion, setCurrent, clearCurrent } = questionContext;
 
   const authContext = useContext(AuthContext);
-  const { isAuthenticated, user } = authContext;
+  const { user } = authContext;
 
   const [toggleAns, settoggleAns] = useState('displayNone');
 
@@ -21,7 +20,7 @@ const QuestionItem = ({ question }) => {
     toggleAns === 'displayNone' ? settoggleAns('displayBlock') : settoggleAns('displayNone');
   }
 
-  const { que, date, _id } = question;
+  const { que, _id } = question;
 
   const onDelete = () => {
     deleteQuestion(_id);
@@ -55,6 +54,5 @@ const QuestionItem = ({ question }) => {
 QuestionItem.propTypes = {
   question: PropTypes.object.isRequired,
 }
-
 
 export default QuestionItem;

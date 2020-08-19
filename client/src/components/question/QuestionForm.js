@@ -8,10 +8,9 @@ import QuestionContext from '../../context/question/queContext';
 const QuestionForm = () => {
 
   const questionContext = useContext(QuestionContext);
+  const { addQuestion, current, clearCurrent, updateQuestion } = questionContext;
 
   const [isExpanded, setExpanded] = useState(false);
-
-  const { addQuestion, current, clearCurrent, updateQuestion } = questionContext;
 
   useEffect(() => {
     if (current !== null) {
@@ -26,7 +25,6 @@ const QuestionForm = () => {
   const [question, setQuestion] = useState({
     que: ''
   });
-
   const { que } = question;
 
   const onChange = e => setQuestion({ ...question, [e.target.name]: e.target.value });

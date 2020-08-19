@@ -14,6 +14,7 @@ const QuestionsNAnswers = () => {
     authContext.loadUser();
     // eslint-disable-next-line
   }, []);
+
   return (
     <Fragment>
       <Header />
@@ -23,6 +24,5 @@ const QuestionsNAnswers = () => {
     </Fragment>
   )
 }
-
 
 export default QuestionsNAnswers;

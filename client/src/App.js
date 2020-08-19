@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles.css';
 import QuestionsNAnswers from './components/pages/QuestionsNAnswers';
 import Home from './components/pages/Home';
+import Profile from './components/pages/Profile';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
@@ -16,9 +17,9 @@ import setAuthToken from './utils/setAuthToken';
 if (localStorage.token) {
   setAuthToken(localStorage.token);
 }
+
 const App = () => {
   return (
-
     <AuthState>
       <QuestionState>
         <AnswerState>
@@ -31,6 +32,7 @@ const App = () => {
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
                   <Route exact path='/home' component={Home} />
+                  <PrivateRoute exact path='/profile' component={Profile} />
                 </Switch>
               </Fragment>
             </Router>
