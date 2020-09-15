@@ -45,35 +45,37 @@ const Login = (props) => {
   }
 
   return (
-    <div className='userForm'>
-      <h1><QuestionAnswerIcon className='mainIcon' /> Ask ME ! <span>Log In</span></h1>
-      <form onSubmit={onSubmit}>
-        <br />
-        <label htmlFor='email'>Email </label>
-        <br />
-        <input type='email'
-          name='email'
-          value={email}
-          onChange={onChange}
-          required
-          placeholder='abc@email.com'
-          autoComplete='off'
-        />
-        <br />
-        <label htmlFor='password'>Password</label>
-        <br />
-        <input type='password'
-          name='password'
-          value={password}
-          onChange={onChange}
-          required
-          placeholder='********'
-        />
-        <br />
-        <button type='submit'>Log In</button>
-      </form>
-      <h3>Don't have an account ? </h3>
-      <Link className='redirectLink' to='/register'>Register</Link>
+    <div className='centerIT'>
+      <div className='userForm'>
+        <h1><QuestionAnswerIcon className='mainIcon' /> Ask ME ! <span>Log In</span></h1>
+        <form onSubmit={onSubmit}>
+          <br />
+          <label htmlFor='email'>Email </label>
+          <br />
+          <input type='email'
+            name='email'
+            value={email}
+            onChange={onChange}
+            required
+            placeholder='abc@email.com'
+            autoComplete='off'
+          />
+          <br />
+          <label htmlFor='password'>Password</label>
+          <br />
+          <input type='password'
+            name='password'
+            value={password}
+            onChange={onChange}
+            required
+            placeholder='********'
+          />
+          <br />
+          <button type='submit'>Log In</button>
+        </form>
+        <h3>Don't have an account ? </h3>
+        <Link className='redirectLink' to='/register'>Register</Link>
+      </div>
     </div>
   )
 }

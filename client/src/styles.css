@@ -1,3 +1,11 @@
+:root {
+  --c1: #000d1a;
+  --c2: #001a33;
+  --c3: #00264d;
+  --c4: #e43f5a;
+  --bg: #e6f2ff;
+}
+
 * {
   padding: 0;
   margin: 0;
@@ -10,7 +18,7 @@ html {
 }
 
 body {
-  background: #eee;
+  background: var(--bg);
   text-align: center;
 }
 
@@ -23,18 +31,16 @@ body {
 }
 
 header {
-  /* background-color: #1b1b2f; */
   width: 100%;
-  /* margin: auto -1rem; */
   padding: 1rem;
-  /* box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.3); */
+  color: var(--bg);
+
 }
 
 header h1,
 header h2 {
-  color: #fff;
   font-weight: 200;
-  font-size: 2.5vw;
+  font-size: 2.5rem;
   text-align: left;
 }
 
@@ -44,42 +50,37 @@ header h2 {
 }
 
 header p {
-  color: #f4f4f4;
   padding-top: 0.5rem;
-  font-size: 1.5vw;
+  font-size: 1.5rem;
   text-align: left;
 }
 
 .headerIcon {
   transform: scale(2);
-  margin-right: 1rem;
-  color: #e43f5a;
+  margin: 0 1rem;
+  color: var(--bg);
 }
 
 .headerLink {
   text-decoration: none;
   margin-left: 1rem;
-  /* height: 3vw; */
   float: right;
   padding: 0.5rem;
-  border-radius: 10px;
-  border: 2px solid #eee;
-  background-color: #162447;
-  color: #fff;
-  font-size: 1vw;
-  transition: background-color ease 0.5s;
+  border-radius: 5px;
+  background-color: var(--c2);
+  color: var(--bg);
+  font-size: 1rem;
+  transition: all ease 0.2s;
 }
 
 .headerLink:hover {
   cursor: pointer;
-  border: 1px solid #1f4868;
-  box-shadow: 0 0 10px 3px #1f4868;
+  box-shadow: 0 .3rem 1rem .3rem rgba(0, 0, 0, 0.3);
   transform: scale(1.3);
-
 }
 
 .userName {
-  margin-top: -5rem;
+  margin-top: -4.5rem;
   text-align: right;
 }
 
@@ -88,7 +89,7 @@ header p {
   padding: 1rem 2rem;
   right: 0;
   opacity: 0.8;
-  background: #1b1b2f;
+  background: var(--c1);
   color: white;
   display: inline-block;
   margin: 1rem;
@@ -96,7 +97,7 @@ header p {
 }
 
 form.create-que {
-  color: #1b1b2f;
+  color: var(--c1);
   position: relative;
   width: 70%;
   margin: 3rem auto 1rem auto;
@@ -108,7 +109,7 @@ form.create-que {
 }
 
 form.filterForm {
-  color: #1b1b2f;
+  color: var(--c1);
   position: relative;
   background: #fff;
   width: 50%;
@@ -131,11 +132,12 @@ form.filterForm input {
   resize: none;
 }
 
-form.create-que button {
+form.create-que button,
+.imageInput {
   position: absolute;
   right: 18px;
   bottom: -18px;
-  background: #1b1b2f;
+  background: var(--c1);
   color: #fff;
   border: none;
   border-radius: 50%;
@@ -144,14 +146,6 @@ form.create-que button {
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3);
   cursor: pointer;
   outline: none;
-}
-
-.clear-btn {
-  position: absolute;
-  right: 100px;
-  bottom: -18px;
-  background-color: lightgray;
-  color: #1b1b2f;
 }
 
 .question,
@@ -168,18 +162,11 @@ form.create-que button {
 .answer p {
   text-align: left;
   padding: 1rem;
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 0.5rem;
   white-space: pre-wrap;
   word-wrap: break-word;
-}
-
-.questionHeader {
-  margin: 2rem;
-  text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
 .question button,
@@ -188,9 +175,7 @@ form.create-que button {
   text-decoration: none;
   position: relative;
   margin-right: 10px;
-  /* margin-top: -1.5rem; */
-  color: #1b1b2f;
-  /* border: 2px solid #ccc; */
+  color: var(--c1);
   border: none;
   cursor: pointer;
   outline: none;
@@ -198,7 +183,7 @@ form.create-que button {
   border-radius: 5px;
   font-size: 1rem;
   font-weight: bold;
-  background-color: #eee;
+  background-color: var(--bg);
   transition: background-color ease 0.5s;
 }
 
@@ -208,16 +193,11 @@ form.create-que button {
 }
 
 .toggleLike {
-  color: #e43f5a;
+  color: var(--c4);
 }
 
 .toggleUnlike {
-  color: #1f4868;
-}
-
-.likeQue {
-  color: #ccc;
-  transform: scale(4);
+  color: var(--c3);
 }
 
 .floatRight {
@@ -228,79 +208,17 @@ form.create-que button {
   float: left;
 }
 
-.homePage {
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  text-align: center;
-  padding: 1rem;
-  margin: auto;
-  display: inline-block;
-  width: 70%;
-  height: 70%;
-}
-
 .mainIcon {
   transform: scale(3);
-  color: #1b1b2f;
-  margin: 0.5rem 1.5rem;
+  color: var(--c1);
+  margin: 1rem;
 }
 
-.homePage h1 {
-  font-size: 4rem;
-  color: #1b1b2f;
-}
-
-.homePage p {
-  margin: 2rem 5rem;
-  font-size: 1.5rem;
-  font-weight: bold;
-}
-
-.hrLine {
-  color: #1b1b2f;
-  margin: 3rem;
-  opacity: 0.8;
-}
-
-.redirectLink {
-  margin: 0rem 2rem;
-  padding: 1rem;
-  border-radius: 5px;
-  font-weight: bold;
-  font-size: 1.2rem;
-  transition: background-color ease 0.5s;
-  text-decoration: none;
-}
-
-.logIn {
-  background-color: #1b1b2f;
-  color: #fff;
-}
-
-.register {
-  background-color: lightgray;
-  color: #1b1b2f;
-}
-
-.logIn:hover {
-  cursor: pointer;
-  background-color: #162447;
-  color: #fff;
-}
-
-.register:hover {
-  cursor: pointer;
-  color: black;
-  background-color: grey;
-}
-
-.userForm {
-  text-align: center;
-  padding-top: 3rem;
-  display: block;
+.centerIT {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
 }
 
 .userForm h1 {
@@ -308,32 +226,24 @@ form.create-que button {
   font-size: 2.5rem;
 }
 
-.userForm h1 QuestionAnswerIcon {
-  transform: scale(2);
-}
-
 .userForm span {
   font-weight: bold;
-  margin: 0.5rem;
-  color: #1f4868;
+  color: var(--c3);
 }
 
 .userForm form {
-  display: inline-block;
-  margin: auto;
-  text-align: left;
-  height: 100%;
+  text-align: center;
 }
 
 .userForm label {
   font-size: 1.5rem;
   font-weight: bold;
-  text-align: left;
   margin-right: 1rem;
 }
 
 .userForm input {
-  width: 30rem;
+  max-width: 30rem;
+  width: 80%;
   border-radius: 5px;
   border: none;
   padding: 1rem;
@@ -347,37 +257,30 @@ form.create-que button {
 
 .userForm button {
   margin: 1.5rem 0rem;
-  width: 30rem;
+  max-width: 30rem;
+  width: 80%;
   padding: 0.5rem;
   border-radius: 5px;
   border: none;
-  background-color: #1b1b2f;
+  background-color: var(--c1);
   color: #fff;
   font-size: 1.5rem;
   box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
-  transition: background-color ease 0.5s;
+  transition: all ease 0.5s;
 }
 
 .userForm button:hover {
   cursor: pointer;
-  background-color: #1f4868;
+  background-color: var(--c3);
 }
 
-/* Profile Page */
-
-.profilePage {
-  padding: 1rem;
-  text-align: left;
-
+.redirectLink {
+  font-weight: bold;
+  font-size: 1.2rem;
+  text-decoration: none;
 }
 
-.profileImage {
-  height: 5rem;
-  width: 5rem;
-  object-fit: cover;
-  background-position: center;
-  border-radius: 50%;
-}
+/* wavyBG */
 
 .wavyBG {
   position: absolute;
@@ -385,55 +288,6 @@ form.create-que button {
   left: 0;
   z-index: -1;
 }
-
-input[type='file'] {
-  display: none;
-}
-
-.imageInput {
-  display: inline-block;
-  padding: 1.5rem;
-  height: 5rem;
-  width: 5rem;
-  cursor: pointer;
-  color: #162447;
-  background-color: #ccc;
-  margin: 1rem;
-  border-radius: 50%;
-  text-align: center;
-}
-
-.imgIcon {
-  transform: scale(3)
-}
-
-.ProfileHeader span {
-  font-size: 2.5rem;
-  color: white;
-}
-
-/* 
-.Contributions {
-  float: right;
-  color: white;
-  padding: 1.5rem;
-  height: 100px;
-  margin: auto;
-}
-
-.Contributions p {
-  padding: 0.2rem;
-  font-size: 1.2rem;
-}
-
-.ProfileSmallTitle {
-  padding: 1rem; 
-  font-size: 2rem;
-}
-
-.ProfileFlex {
-  display: flex;
-} */
 
 /* Animation (Add after) */
 .item-enter {
@@ -456,86 +310,17 @@ input[type='file'] {
 
 
 @media(max-width: 768px) {
-  .homePage {
-    margin: auto;
-    padding: 0.5rem;
-    padding-top: 1rem;
-    width: 100%;
-    height: 100%;
+
+  html {
+    font-size: 75%;
   }
 
   .mainIcon {
     transform: scale(2);
-    margin: 0.5rem;
-  }
-
-  .homePage h1 {
-    font-size: 3rem;
-  }
-
-  .homePage p {
-    margin: 2rem 3rem;
-  }
-
-  .redirectLink {
-    margin: auto 0.5rem;
-    padding: 0.5rem;
-  }
-
-  .userForm {
-    padding-top: 1rem;
-    margin: 0.5rem;
-  }
-
-  .userForm h1 {
-    font-size: 1.5rem;
-  }
-
-  .userForm label {
-    font-size: 1rem;
-  }
-
-  .userForm input {
-    width: 100%;
-    padding: 0.5rem;
-    font-size: 1em;
-  }
-
-  .userForm button {
-    width: 100%;
-    font-size: 1rem;
   }
 
   header {
-    padding: 0.5rem 1rem;
-    background-color: #1b1b2f;
-    border-radius: 0px 0px 25px 25px;
-    box-shadow: 0 0 10px 5px rgba(0, 0, 0, 0.3);
-  }
-
-  header h1 {
-    font-size: 1.5rem;
-    margin: 0;
-
-  }
-
-  header p {
-    margin-bottom: 0.5rem;
-    font-size: 1rem;
-    padding-top: 0;
-  }
-
-  .headerIcon {
-    transform: scale(1);
-    margin-right: 0;
-  }
-
-  .headerLink {
-    height: 2rem;
-    padding: 0.2rem;
-    font-size: 0.8rem;
-    margin-top: -0.5rem;
-    margin-left: 0.5rem;
+    background-image: linear-gradient(to bottom, var(--c1), var(--c2), var(--c3), #003366, #004d99, #0066cc, #0080ff, #66b3ff, var(--bg));
   }
 
   .wavyBG {
@@ -547,40 +332,23 @@ input[type='file'] {
   }
 
   .userName {
-    margin-top: -4rem;
-    font-size: 0.85rem;
+    margin-top: -6rem;
+    font-size: 1.5rem;
     width: 40%;
   }
 
   form.create-que {
     width: 95%;
-    padding: 0.5rem;
   }
 
   form.filterForm {
     width: 85%;
-    margin: 1.5rem auto 1rem auto;
-    padding: 0.3rem;
-  }
-
-  form.create-que input,
-  form.create-que textarea,
-  form.filterForm input {
-    font-size: 1rem;
   }
 
   .question,
   .answer {
-    margin: 0.5rem;
+    margin: 1rem;
     margin-bottom: 3rem;
   }
 
-  .question p,
-  .answer p {
-    padding: 0.5rem;
-  }
-
-  .question button {
-    font-size: 0.8rem;
-  }
 }

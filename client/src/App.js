@@ -2,12 +2,9 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import './styles.css';
 import QuestionsNAnswers from './components/pages/QuestionsNAnswers';
-import Home from './components/pages/Home';
-import Profile from './components/pages/Profile';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
-import PrivateRoute from './components/routing/PrivateRoute';
 import QuestionState from './context/question/queState';
 import AnswerState from './context/answer/answerState';
 import AuthState from './context/auth/AuthState';
@@ -31,8 +28,6 @@ const App = () => {
                   <Route exact path='/' component={QuestionsNAnswers} />
                   <Route exact path='/register' component={Register} />
                   <Route exact path='/login' component={Login} />
-                  <Route exact path='/home' component={Home} />
-                  <PrivateRoute exact path='/profile' component={Profile} />
                 </Switch>
               </Fragment>
             </Router>

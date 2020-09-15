@@ -9,7 +9,7 @@ const Alerts = () => {
         {alert.msg}
       </div>
     ))
-  )
+  );
 }
 
 export default Alerts;
