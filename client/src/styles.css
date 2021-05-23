@@ -13,8 +13,7 @@
 }
 
 html {
-  font-family: "McLaren",
-    cursive;
+  font-family: 'McLaren', cursive;
 }
 
 body {
@@ -34,7 +33,6 @@ header {
   width: 100%;
   padding: 1rem;
   color: var(--bg);
-
 }
 
 header h1,
@@ -42,6 +40,7 @@ header h2 {
   font-weight: 200;
   font-size: 2.5rem;
   text-align: left;
+  text-shadow: 2px 2px 0 var(--c3);
 }
 
 header h2 {
@@ -53,6 +52,7 @@ header p {
   padding-top: 0.5rem;
   font-size: 1.5rem;
   text-align: left;
+  text-shadow: 1px 1px 0 var(--c3);
 }
 
 .headerIcon {
@@ -70,13 +70,14 @@ header p {
   background-color: var(--c2);
   color: var(--bg);
   font-size: 1rem;
-  transition: all ease 0.2s;
+  transition: all ease-in-out 0.2s;
+  cursor: pointer;
 }
 
 .headerLink:hover {
-  cursor: pointer;
-  box-shadow: 0 .3rem 1rem .3rem rgba(0, 0, 0, 0.3);
-  transform: scale(1.3);
+  background-color: var(--bg);
+  color: var(--c2);
+  box-shadow: 0 0 20px 0px var(--c2);
 }
 
 .userName {
@@ -214,11 +215,8 @@ form.create-que button,
   margin: 1rem;
 }
 
-.centerIT {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 100vh;
+.userForm {
+  margin-top: 5rem;
 }
 
 .userForm h1 {
@@ -280,6 +278,15 @@ form.create-que button,
   text-decoration: none;
 }
 
+.noQue {
+  font-size: 1.5rem;
+  font-weight: normal;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10rem;
+}
+
 /* wavyBG */
 
 .wavyBG {
@@ -308,9 +315,7 @@ form.create-que button,
   transition: opacity 1000ms ease-in;
 }
 
-
-@media(max-width: 768px) {
-
+@media (max-width: 768px) {
   html {
     font-size: 75%;
   }
@@ -320,7 +325,18 @@ form.create-que button,
   }
 
   header {
-    background-image: linear-gradient(to bottom, var(--c1), var(--c2), var(--c3), #003366, #004d99, #0066cc, #0080ff, #66b3ff, var(--bg));
+    background-image: linear-gradient(
+      to bottom,
+      var(--c1),
+      var(--c2),
+      var(--c3),
+      #003366,
+      #004d99,
+      #0066cc,
+      #0080ff,
+      #66b3ff,
+      var(--bg)
+    );
   }
 
   .wavyBG {
@@ -350,5 +366,4 @@ form.create-que button,
     margin: 1rem;
     margin-bottom: 3rem;
   }
-
 }

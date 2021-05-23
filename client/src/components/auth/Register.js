@@ -49,60 +49,58 @@ const Register = (props) => {
   }
 
   return (
-    <div className='centerIT'>
-      <div className='userForm'>
-        <h1><QuestionAnswerIcon className='mainIcon' /> Ask ME ! <span>Register</span></h1>
+    <div className='userForm'>
+      <h1><QuestionAnswerIcon className='mainIcon' /> Ask ME ! <span>Register</span></h1>
+      <br />
+      <form onSubmit={onSubmit}>
+        <label htmlFor='name'>User Name </label>
         <br />
-        <form onSubmit={onSubmit}>
-          <label htmlFor='name'>User Name </label>
-          <br />
-          <input type='text'
-            name='name'
-            value={name}
-            onChange={onChange}
-            required
-            placeholder='ABC'
-            autoComplete='off'
-          />
-          <br />
-          <label htmlFor='email'>Email Address</label>
-          <br />
-          <input type='email'
-            name='email'
-            value={email}
-            onChange={onChange}
-            required
-            placeholder='abc@email.com'
-            autoComplete='off'
-          />
-          <br />
-          <label htmlFor='password'>Password</label>
-          <br />
-          <input type='password'
-            name='password'
-            value={password}
-            onChange={onChange}
-            required
-            minLength='6'
-            placeholder='********'
-          />
-          <br />
-          <label htmlFor='password2'>Confirm Password</label>
-          <br />
-          <input type='password'
-            name='password2'
-            value={password2}
-            onChange={onChange}
-            required
-            minLength='6'
-            placeholder='********'
-          />
-          <br />
-          <button type='submit'>Register</button>
-        </form>
-        <h3>Already have an account ? </h3>
-        <Link className='redirectLink' to='/login'>Log In</Link>
-      </div>
+        <input type='text'
+          name='name'
+          value={name}
+          onChange={onChange}
+          required
+          placeholder='ABC'
+          autoComplete='off'
+        />
+        <br />
+        <label htmlFor='email'>Email Address</label>
+        <br />
+        <input type='email'
+          name='email'
+          value={email}
+          onChange={onChange}
+          required
+          placeholder='abc@email.com'
+          autoComplete='off'
+        />
+        <br />
+        <label htmlFor='password'>Password</label>
+        <br />
+        <input type='password'
+          name='password'
+          value={password}
+          onChange={onChange}
+          required
+          minLength='6'
+          placeholder='********'
+        />
+        <br />
+        <label htmlFor='password2'>Confirm Password</label>
+        <br />
+        <input type='password'
+          name='password2'
+          value={password2}
+          onChange={onChange}
+          required
+          minLength='6'
+          placeholder='********'
+        />
+        <br />
+        <button type='submit'>Register</button>
+      </form>
+      <h3>Already have an account ? </h3>
+      <Link className='redirectLink' to='/login'>Log In</Link>
     </div>
   )
 }

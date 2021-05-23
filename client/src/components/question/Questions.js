@@ -3,6 +3,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import QuestionItem from './QuestionItem';
 import QuestionContext from '../../context/question/queContext';
 import Spinner from '../layout/Spinner';
+import QuestionFilter from './QuestionFilter';
 
 const Questions = () => {
   const queContext = useContext(QuestionContext);
@@ -14,11 +15,12 @@ const Questions = () => {
   }, []);
 
   if (allQuestions !== null && allQuestions.length === 0 && !loading) {
-    return <h4> please ask your Question</h4>
+    return <h3 className='noQue'> There is no Question !</h3>
   }
 
   return (
     <Fragment>
+      <QuestionFilter />
       {(allQuestions !== null && !loading)
         ? (
           <TransitionGroup>

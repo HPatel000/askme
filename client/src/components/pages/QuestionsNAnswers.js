@@ -2,7 +2,6 @@ import React, { useContext, useEffect, Fragment } from 'react';
 import Header from '../layout/Header';
 import Questions from '../question/Questions';
 import QuestionForm from '../question/QuestionForm';
-import QuestionFilter from '../question/QuestionFilter';
 import AuthContext from '../../context/auth/authContext';
 
 const QuestionsNAnswers = () => {
@@ -18,8 +17,7 @@ const QuestionsNAnswers = () => {
   return (
     <Fragment>
       <Header />
-      {isAuthenticated ? <QuestionForm /> : <Fragment></Fragment>}
-      <QuestionFilter />
+      {isAuthenticated ? <QuestionForm /> : <Fragment />}
       <Questions />
     </Fragment>
   )
