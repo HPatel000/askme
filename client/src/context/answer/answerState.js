@@ -1,7 +1,7 @@
-import React, { useReducer } from 'react';
-import AnswerContext from './answerContext';
-import answerReducer from './answerReducer';
-import axios from 'axios';
+import React, { useReducer } from 'react'
+import AnswerContext from './answerContext'
+import answerReducer from './answerReducer'
+import axios from 'axios'
 import {
   ADD_ANSWER,
   DELETE_ANSWER,
@@ -12,8 +12,8 @@ import {
   CLEAR_FILTER,
   GET_ANSWERS,
   CLEAR_ANSWERS,
-  ANSWER_ERROR
-} from '../types';
+  ANSWER_ERROR,
+} from '../types'
 
 const AnswerState = props => {
   const initalState = {
@@ -21,20 +21,20 @@ const AnswerState = props => {
     current: null,
     filtered: null,
     answers: null,
-    error: null
+    error: null,
   }
 
-  const [state, dispatch] = useReducer(answerReducer, initalState);
+  const [state, dispatch] = useReducer(answerReducer, initalState)
 
   // get answers
   const getAnswers = async id => {
     try {
-      const res = await axios.get(`./api/answers/${id}`);
-      dispatch({ type: GET_ANSWERS, payload: { 'data': res.data, 'id': id } });
+      const res = await axios.get(`./api/answers/${id}`)
+      dispatch({ type: GET_ANSWERS, payload: { data: res.data, id: id } })
     } catch (error) {
       dispatch({
         type: ANSWER_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -43,16 +43,16 @@ const AnswerState = props => {
   const addAnswer = async (answer, id) => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     }
     try {
-      const res = await axios.post(`./api/answers/${id}`, answer, config);
-      dispatch({ type: ADD_ANSWER, payload: res.data });
+      const res = await axios.post(`./api/answers/${id}`, answer, config)
+      dispatch({ type: ADD_ANSWER, payload: res.data })
     } catch (error) {
       dispatch({
         type: ANSWER_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -60,14 +60,15 @@ const AnswerState = props => {
   // Delete answer
   const deleteAnswer = async (id, queId) => {
     try {
-      await axios.delete(`./api/answers/${id}`);
+      await axios.delete(`./api/answers/${id}`)
       dispatch({
-        type: DELETE_ANSWER, payload: { 'id': id, 'queId': queId }
-      });
+        type: DELETE_ANSWER,
+        payload: { id: id, queId: queId },
+      })
     } catch (error) {
       dispatch({
         type: ANSWER_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -76,42 +77,42 @@ const AnswerState = props => {
   const updateAnswer = async answer => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     }
     try {
-      const res = await axios.put(`./api/answers/${answer._id}`, answer, config);
-      dispatch({ type: UPDATE_ANSWER, payload: res.data });
+      const res = await axios.put(`./api/answers/${answer._id}`, answer, config)
+      dispatch({ type: UPDATE_ANSWER, payload: res.data })
     } catch (error) {
       dispatch({
         type: ANSWER_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
 
   // clear answers
   const clearAnswers = () => {
-    dispatch({ type: CLEAR_ANSWERS });
+    dispatch({ type: CLEAR_ANSWERS })
   }
 
   // Set current answer
   const setCurrent = answer => {
-    dispatch({ type: SET_CURRENT, payload: answer });
+    dispatch({ type: SET_CURRENT, payload: answer })
   }
   // clear current
   const clearCurrent = () => {
-    dispatch({ type: CLEAR_CURRENT });
+    dispatch({ type: CLEAR_CURRENT })
   }
 
   // Filter answers
   const filteredAnswers = (text, queId) => {
-    dispatch({ type: FILTER_ANSWERS, payload: { 'text': text, 'queId': queId } });
+    dispatch({ type: FILTER_ANSWERS, payload: { text: text, queId: queId } })
   }
 
   // Clear Filter
   const clearFilter = () => {
-    dispatch({ type: CLEAR_FILTER });
+    dispatch({ type: CLEAR_FILTER })
   }
 
   return (
@@ -130,11 +131,12 @@ const AnswerState = props => {
         filteredAnswers,
         clearFilter,
         clearAnswers,
-        getAnswers
-      }}>
+        getAnswers,
+      }}
+    >
       {props.children}
     </AnswerContext.Provider>
   )
 }
 
-export default AnswerState;
+export default AnswerState

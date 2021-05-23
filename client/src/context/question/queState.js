@@ -1,7 +1,7 @@
-import React, { useReducer } from 'react';
-import QuestionContext from './queContext';
-import questionReducer from './queReducer';
-import axios from 'axios';
+import React, { useReducer } from 'react'
+import QuestionContext from './queContext'
+import questionReducer from './queReducer'
+import axios from 'axios'
 import {
   ADD_QUESTION,
   DELETE_QUESTION,
@@ -13,8 +13,8 @@ import {
   GET_QUESTIONS,
   GET_ALL_QUESTIONS,
   CLEAR_QUESTIONS,
-  QUESTION_ERROR
-} from '../types';
+  QUESTION_ERROR,
+} from '../types'
 
 const QuestionState = props => {
   const initalState = {
@@ -22,20 +22,20 @@ const QuestionState = props => {
     filtered: null,
     questions: null,
     allQuestions: null,
-    error: null
+    error: null,
   }
 
-  const [state, dispatch] = useReducer(questionReducer, initalState);
+  const [state, dispatch] = useReducer(questionReducer, initalState)
 
   // get all questions
   const getAllQuestion = async () => {
     try {
-      const res = await axios.get('./api/questions/all');
-      dispatch({ type: GET_ALL_QUESTIONS, payload: res.data });
+      const res = await axios.get('./api/questions/all')
+      dispatch({ type: GET_ALL_QUESTIONS, payload: res.data })
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -43,31 +43,30 @@ const QuestionState = props => {
   // get user's questions
   const getQuestion = async () => {
     try {
-      const res = await axios.get('./api/questions');
-      dispatch({ type: GET_QUESTIONS, payload: res.data });
+      const res = await axios.get('./api/questions')
+      dispatch({ type: GET_QUESTIONS, payload: res.data })
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
-
 
   // Add question
   const addQuestion = async question => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     }
     try {
-      const res = await axios.post('./api/questions', question, config);
-      dispatch({ type: ADD_QUESTION, payload: res.data });
+      const res = await axios.post('./api/questions', question, config)
+      dispatch({ type: ADD_QUESTION, payload: res.data })
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -75,14 +74,15 @@ const QuestionState = props => {
   // Delete question
   const deleteQuestion = async id => {
     try {
-      await axios.delete(`./api/questions/${id}`);
+      await axios.delete(`./api/questions/${id}`)
       dispatch({
-        type: DELETE_QUESTION, payload: id
-      });
+        type: DELETE_QUESTION,
+        payload: id,
+      })
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error
+        payload: error,
       })
     }
   }
@@ -90,42 +90,46 @@ const QuestionState = props => {
   const updateQuestion = async question => {
     const config = {
       headers: {
-        'Content-Type': 'application/json'
-      }
+        'Content-Type': 'application/json',
+      },
     }
     try {
-      const res = await axios.put(`./api/questions/${question._id}`, question, config);
-      dispatch({ type: UPDATE_QUESTION, payload: res.data });
+      const res = await axios.put(
+        `./api/questions/${question._id}`,
+        question,
+        config
+      )
+      dispatch({ type: UPDATE_QUESTION, payload: res.data })
     } catch (error) {
       dispatch({
         type: QUESTION_ERROR,
-        payload: error.response.msg
+        payload: error.response.msg,
       })
     }
   }
 
   // clear questions
   const clearQuestions = () => {
-    dispatch({ type: CLEAR_QUESTIONS });
+    dispatch({ type: CLEAR_QUESTIONS })
   }
 
   // Set current question
   const setCurrent = question => {
-    dispatch({ type: SET_CURRENT, payload: question });
+    dispatch({ type: SET_CURRENT, payload: question })
   }
   // clear current
   const clearCurrent = () => {
-    dispatch({ type: CLEAR_CURRENT });
+    dispatch({ type: CLEAR_CURRENT })
   }
 
   // Filter questions
   const filteredQuestions = text => {
-    dispatch({ type: FILTER_QUESTIONS, payload: text });
+    dispatch({ type: FILTER_QUESTIONS, payload: text })
   }
 
   // Clear Filter
   const clearFilter = () => {
-    dispatch({ type: CLEAR_FILTER });
+    dispatch({ type: CLEAR_FILTER })
   }
 
   return (
@@ -145,11 +149,12 @@ const QuestionState = props => {
         clearFilter,
         clearQuestions,
         getQuestion,
-        getAllQuestion
-      }}>
+        getAllQuestion,
+      }}
+    >
       {props.children}
     </QuestionContext.Provider>
   )
 }
 
-export default QuestionState;
+export default QuestionState

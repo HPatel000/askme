@@ -9,8 +9,8 @@ import {
   GET_QUESTIONS,
   GET_ALL_QUESTIONS,
   CLEAR_QUESTIONS,
-  QUESTION_ERROR
-} from '../types';
+  QUESTION_ERROR,
+} from '../types'
 
 export default (state, action) => {
   switch (action.type) {
@@ -18,31 +18,35 @@ export default (state, action) => {
       return {
         ...state,
         allQuestions: action.payload,
-        loading: false
+        loading: false,
       }
     case GET_QUESTIONS:
       return {
         ...state,
         questions: action.payload,
-        loading: false
+        loading: false,
       }
     case ADD_QUESTION:
       return {
         ...state,
         allQuestions: [action.payload, ...state.allQuestions],
-        loading: false
+        loading: false,
       }
     case UPDATE_QUESTION:
       return {
         ...state,
-        allQuestions: state.allQuestions.map(question => question._id === action.payload._id ? action.payload : question),
-        loading: false
+        allQuestions: state.allQuestions.map(question =>
+          question._id === action.payload._id ? action.payload : question
+        ),
+        loading: false,
       }
     case DELETE_QUESTION:
       return {
         ...state,
-        allQuestions: state.allQuestions.filter(question => question._id !== action.payload),
-        loading: false
+        allQuestions: state.allQuestions.filter(
+          question => question._id !== action.payload
+        ),
+        loading: false,
       }
     case CLEAR_QUESTIONS:
       return {
@@ -50,37 +54,37 @@ export default (state, action) => {
         questions: null,
         filtered: null,
         error: null,
-        current: null
+        current: null,
       }
     case SET_CURRENT:
       return {
         ...state,
-        current: action.payload
+        current: action.payload,
       }
     case CLEAR_CURRENT:
       return {
         ...state,
-        current: null
+        current: null,
       }
     case FILTER_QUESTIONS:
       return {
         ...state,
         filtered: state.allQuestions.filter(question => {
-          const regex = new RegExp(`${action.payload}`, 'gi');
-          return question.que.match(regex);
-        })
+          const regex = new RegExp(`${action.payload}`, 'gi')
+          return question.que.match(regex)
+        }),
       }
     case CLEAR_FILTER:
       return {
         ...state,
-        filtered: null
+        filtered: null,
       }
     case QUESTION_ERROR:
       return {
         ...state,
-        error: action.payload
+        error: action.payload,
       }
     default:
-      return state;
+      return state
   }
 }

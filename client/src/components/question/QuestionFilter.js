@@ -1,31 +1,36 @@
-import React, { useContext, useRef, useEffect } from 'react';
-import QuestionContext from '../../context/question/queContext';
+import React, { useContext, useRef, useEffect } from 'react'
+import QuestionContext from '../../context/question/queContext'
 
 const QuestionFilter = () => {
-  const questionContext = useContext(QuestionContext);
-  const { filteredQuestions, clearFilter, filtered } = questionContext;
+  const questionContext = useContext(QuestionContext)
+  const { filteredQuestions, clearFilter, filtered } = questionContext
 
-  const text = useRef('');
+  const text = useRef('')
 
   useEffect(() => {
     if (filtered === null) {
-      text.current.value = '';
+      text.current.value = ''
     }
-  });
+  })
 
   const onChange = e => {
     if (text.current.value !== '') {
-      filteredQuestions(e.target.value);
+      filteredQuestions(e.target.value)
     } else {
-      clearFilter();
+      clearFilter()
     }
   }
 
   return (
     <form className='filterForm'>
-      <input ref={text} type='text' placeholder='Filter Questions...' onChange={onChange} />
+      <input
+        ref={text}
+        type='text'
+        placeholder='Filter Questions...'
+        onChange={onChange}
+      />
     </form>
   )
 }
 
-export default QuestionFilter;
+export default QuestionFilter
